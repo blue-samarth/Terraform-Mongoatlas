@@ -45,10 +45,16 @@ resource "aws_vpc_endpoint" "vpc_mongodb_dev" {
   subnet_ids         = module.vpc.private_subnets
   security_group_ids = [module.vpc.default_security_group_id]
 
-  auto_accept         = true
+  auto_accept         = false
   private_dns_enabled = false
 
   tags = { Name = "${local.org_short_name}-mongodb-dev" }
+
+  lifecycle {
+    create_before_destroy = false
+  }
+
+  depends_on = [ mongodbatlas_privatelink_endpoint.privatelink_endpoint_development ]
 }
 
 resource "aws_vpc_endpoint" "vpc_mongodb_staging" {
@@ -58,10 +64,15 @@ resource "aws_vpc_endpoint" "vpc_mongodb_staging" {
   subnet_ids         = module.vpc.private_subnets
   security_group_ids = [module.vpc.default_security_group_id]
 
-  auto_accept         = true
+  auto_accept         = false
   private_dns_enabled = false
 
   tags = { Name = "${local.org_short_name}-mongodb-staging" }
+  lifecycle {
+    create_before_destroy = false
+  }
+
+  depends_on = [ mongodbatlas_privatelink_endpoint.privatelink_endpoint_staging ]
 }
 
 resource "aws_vpc_endpoint" "vpc_mongodb_prod" {
@@ -71,8 +82,13 @@ resource "aws_vpc_endpoint" "vpc_mongodb_prod" {
   subnet_ids         = module.vpc.private_subnets
   security_group_ids = [module.vpc.default_security_group_id]
 
-  auto_accept         = true
+  auto_accept         = false
   private_dns_enabled = false
 
   tags = { Name = "${local.org_short_name}-mongodb-prod" }
+  lifecycle {
+    create_before_destroy = false
+  }
+
+  depends_on = [ mongodbatlas_privatelink_endpoint.privatelink_endpoint_production ]
 }
