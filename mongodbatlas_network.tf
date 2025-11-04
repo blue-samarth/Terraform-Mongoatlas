@@ -28,7 +28,7 @@ resource "mongodbatlas_network_container" "network_container_production" {
 }
 
 # Private Endpoints (no changes needed)
-resource "mongodbatlas_private_endpoint" "privatelink_endpoint_development" {
+resource "mongodbatlas_privatelink_endpoint" "privatelink_endpoint_development" {
   project_id    = mongodbatlas_project.project_development.id
   provider_name = local.provider_name
   region        = local.region
@@ -41,7 +41,7 @@ resource "mongodbatlas_private_endpoint" "privatelink_endpoint_development" {
   depends_on = [mongodbatlas_project.project_development]
 }
 
-resource "mongodbatlas_private_endpoint" "privatelink_endpoint_staging" {
+resource "mongodbatlas_privatelink_endpoint" "privatelink_endpoint_staging" {
   project_id    = mongodbatlas_project.project_staging.id
   provider_name = local.provider_name
   region        = local.region
@@ -54,7 +54,7 @@ resource "mongodbatlas_private_endpoint" "privatelink_endpoint_staging" {
   depends_on = [mongodbatlas_project.project_staging]
 }
 
-resource "mongodbatlas_private_endpoint" "privatelink_endpoint_production" {
+resource "mongodbatlas_privatelink_endpoint" "privatelink_endpoint_production" {
   project_id    = mongodbatlas_project.project_production.id
   provider_name = local.provider_name
   region        = local.region

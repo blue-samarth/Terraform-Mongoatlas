@@ -21,8 +21,8 @@ resource "mongodbatlas_team" "teams" {
   org_id = local.mongo_org_id
 
   depends_on = [
-        mongodbatlas_project.project_development,
-        mongodbatlas_project.project_staging,
-        mongodbatlas_project.project_production,
-    ]
+    mongodbatlas_project.project_development,
+    mongodbatlas_project.project_staging,
+    mongodbatlas_project.project_production,
+  ]
 }

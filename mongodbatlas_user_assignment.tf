@@ -55,7 +55,7 @@ resource "mongodbatlas_cloud_user_project_assignment" "user_project_assignments"
   username = each.value.user_email
   roles    = each.value.permissions
 
-    depends_on = [ mongodbatlas_team.teams ]
+  depends_on = [mongodbatlas_team.teams]
 }
 
 resource "mongodbatlas_cloud_user_team_assignment" "user_team_assignments" {
@@ -65,5 +65,5 @@ resource "mongodbatlas_cloud_user_team_assignment" "user_team_assignments" {
   team_id = mongodbatlas_team.teams["${each.value.role}-${each.value.environment}"].id
   user_id = mongodbatlas_cloud_user_project_assignment.user_project_assignments[each.key].id
 
-    depends_on = [ mongodbatlas_cloud_user_project_assignment.user_project_assignments ]
+  depends_on = [mongodbatlas_cloud_user_project_assignment.user_project_assignments]
 }
