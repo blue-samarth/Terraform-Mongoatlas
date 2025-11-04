@@ -54,7 +54,7 @@ resource "aws_vpc_endpoint" "vpc_mongodb_dev" {
     create_before_destroy = false
   }
 
-  depends_on = [ mongodbatlas_privatelink_endpoint.privatelink_endpoint_development ]
+  depends_on = [mongodbatlas_privatelink_endpoint.privatelink_endpoint_development]
 }
 
 resource "aws_vpc_endpoint" "vpc_mongodb_staging" {
@@ -72,7 +72,7 @@ resource "aws_vpc_endpoint" "vpc_mongodb_staging" {
     create_before_destroy = false
   }
 
-  depends_on = [ mongodbatlas_privatelink_endpoint.privatelink_endpoint_staging ]
+  depends_on = [mongodbatlas_privatelink_endpoint.privatelink_endpoint_staging]
 }
 
 resource "aws_vpc_endpoint" "vpc_mongodb_prod" {
@@ -90,5 +90,5 @@ resource "aws_vpc_endpoint" "vpc_mongodb_prod" {
     create_before_destroy = false
   }
 
-  depends_on = [ mongodbatlas_privatelink_endpoint.privatelink_endpoint_production ]
+  depends_on = [mongodbatlas_privatelink_endpoint.privatelink_endpoint_production]
 }
