@@ -2,16 +2,13 @@ data "aws_availability_zones" "available" {}
 
 locals {
   org_short_name = "myorg"
-  org_id         = "your_organization_id_here"
-  region         = "us-east-1"
+  org_id         = "Enter_your_aws_org_id_here"
+  region         = "ap-south-1"
   provider_name  = "AWS"
-  mongo_org_id   = "THE_MONGODB_ORG_ID"
+  mongo_org_id   = "ENTER_YOUR_MONGO_ORG_ID_HERE"
 
   vpc_cidr              = "10.10.0.0/16"
-  secondary_cidr_blocks = ["10.11.0.0/18", "10.12.0.0/18"]
+  secondary_cidr_blocks = ["10.11.0.0/21", "10.12.0.0/21"]
   azs                   = slice(data.aws_availability_zones.available.names, 0, 3)
 
-  endpoint_service_id_development = "your_endpoint_service_id_here"
-  endpoint_service_id_staging     = "your_endpoint_service_id_here"
-  endpoint_service_id_production  = "your_endpoint_service_id_here"
 }
