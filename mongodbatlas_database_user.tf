@@ -49,7 +49,7 @@ resource "mongodbatlas_database_user" "database_user_development" {
     type = "CLUSTER"
   }
 
-  depends_on = [ mongodbatlas_advanced_cluster.advanced_cluster_development ]
+  depends_on = [mongodbatlas_advanced_cluster.advanced_cluster_development]
 }
 
 resource "mongodbatlas_database_user" "database_user_staging" {
@@ -73,7 +73,7 @@ resource "mongodbatlas_database_user" "database_user_staging" {
     type = "CLUSTER"
   }
 
-    depends_on = [ mongodbatlas_advanced_cluster.advanced_cluster_staging ]
+  depends_on = [mongodbatlas_advanced_cluster.advanced_cluster_staging]
 }
 
 resource "mongodbatlas_database_user" "database_user_production" {
@@ -97,5 +97,5 @@ resource "mongodbatlas_database_user" "database_user_production" {
     type = "CLUSTER"
   }
 
-    depends_on = [ mongodbatlas_advanced_cluster.advanced_cluster_production ]
+  depends_on = [mongodbatlas_advanced_cluster.advanced_cluster_production]
 }

@@ -36,25 +36,11 @@ module "vpc" {
     Owner = "Terraform"
     team  = "devops"
   }
-
-  default_security_group_ingress = [
-    {
-      description      = "Allow all inbound traffic within VPC"
-      from_port        = 0
-      to_port          = 0
-      protocol         = "-1"
-      cidr_blocks      = [local.vpc_cidr]
-      ipv6_cidr_blocks = []
-      prefix_list_ids  = []
-      security_groups  = []
-      self             = true
-    }
-  ]
 }
 
 resource "aws_vpc_endpoint" "vpc_mongodb_dev" {
   vpc_id             = module.vpc.vpc_id
-  service_name       = mongodbatlas_private_endpoint.privatelink_endpoint_development.endpoint_service_name
+  service_name       = mongodbatlas_privatelink_endpoint.privatelink_endpoint_development.endpoint_service_name
   vpc_endpoint_type  = "Interface"
   subnet_ids         = module.vpc.private_subnets
   security_group_ids = [module.vpc.default_security_group_id]
@@ -67,7 +53,7 @@ resource "aws_vpc_endpoint" "vpc_mongodb_dev" {
 
 resource "aws_vpc_endpoint" "vpc_mongodb_staging" {
   vpc_id             = module.vpc.vpc_id
-  service_name       = mongodbatlas_private_endpoint.privatelink_endpoint_staging.endpoint_service_name
+  service_name       = mongodbatlas_privatelink_endpoint.privatelink_endpoint_staging.endpoint_service_name
   vpc_endpoint_type  = "Interface"
   subnet_ids         = module.vpc.private_subnets
   security_group_ids = [module.vpc.default_security_group_id]
@@ -80,7 +66,7 @@ resource "aws_vpc_endpoint" "vpc_mongodb_staging" {
 
 resource "aws_vpc_endpoint" "vpc_mongodb_prod" {
   vpc_id             = module.vpc.vpc_id
-  service_name       = mongodbatlas_private_endpoint.privatelink_endpoint_production.endpoint_service_name
+  service_name       = mongodbatlas_privatelink_endpoint.privatelink_endpoint_production.endpoint_service_name
   vpc_endpoint_type  = "Interface"
   subnet_ids         = module.vpc.private_subnets
   security_group_ids = [module.vpc.default_security_group_id]
