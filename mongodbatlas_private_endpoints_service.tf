@@ -5,7 +5,7 @@ resource "mongodbatlas_privatelink_endpoint_service" "private_endpoint_service_d
   private_link_id     = mongodbatlas_privatelink_endpoint.privatelink_endpoint_development.id
 
   depends_on = [
-    mongodbatlas_privatelink_endpoint.privatelink_endpoint_development,
+    mongodbatlas_advanced_cluster.advanced_cluster_development,
     aws_vpc_endpoint.vpc_mongodb_dev
   ]
 }
@@ -17,7 +17,7 @@ resource "mongodbatlas_privatelink_endpoint_service" "private_endpoint_service_s
   private_link_id     = mongodbatlas_privatelink_endpoint.privatelink_endpoint_staging.id
 
   depends_on = [
-    mongodbatlas_privatelink_endpoint.privatelink_endpoint_staging,
+    mongodbatlas_advanced_cluster.advanced_cluster_staging,
     aws_vpc_endpoint.vpc_mongodb_staging
   ]
 }
@@ -29,7 +29,7 @@ resource "mongodbatlas_privatelink_endpoint_service" "private_endpoint_service_p
   private_link_id     = mongodbatlas_privatelink_endpoint.privatelink_endpoint_production.id
 
   depends_on = [
-    mongodbatlas_privatelink_endpoint.privatelink_endpoint_production,
+    mongodbatlas_advanced_cluster.advanced_cluster_production,
     aws_vpc_endpoint.vpc_mongodb_prod
   ]
 }

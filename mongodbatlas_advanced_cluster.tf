@@ -37,7 +37,7 @@ resource "mongodbatlas_advanced_cluster" "advanced_cluster_development" {
         compute_scale_down_enabled = false
       }
 
-      region_name   = "US_EAST_1"
+      region_name   = "AP_SOUTH_1"
       priority      = 7
       provider_name = "AWS"
     }]
@@ -98,7 +98,7 @@ resource "mongodbatlas_advanced_cluster" "advanced_cluster_staging" {
         compute_scale_down_enabled = false
       }
 
-      region_name   = "US_EAST_1"
+      region_name   = "AP_SOUTH_1"
       priority      = 7
       provider_name = "AWS"
     }]
@@ -161,7 +161,7 @@ resource "mongodbatlas_advanced_cluster" "advanced_cluster_production" {
         compute_scale_down_enabled = false
       }
 
-      region_name   = "US_EAST_1"
+      region_name   = "AP_SOUTH_1"
       priority      = 7
       provider_name = "AWS"
     }]
