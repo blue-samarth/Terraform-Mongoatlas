@@ -1,33 +1,32 @@
 # Network Containers
 resource "mongodbatlas_network_container" "network_container_development" {
   project_id       = mongodbatlas_project.project_development.id
-  atlas_cidr_block = "10.0.0.0/18"
+  atlas_cidr_block = "192.168.248.0/21"
   provider_name    = "AWS"
-  region_name      = "US_EAST_1"
+  region_name      = "AP_SOUTH_1"
 
   depends_on = [mongodbatlas_project.project_development]
 }
 
 resource "mongodbatlas_network_container" "network_container_staging" {
   project_id       = mongodbatlas_project.project_staging.id
-  atlas_cidr_block = "10.0.64.0/18"
+  atlas_cidr_block = "192.168.248.0/21"
   provider_name    = "AWS"
-  region_name      = "US_EAST_1"
+  region_name      = "AP_SOUTH_1"
 
   depends_on = [mongodbatlas_project.project_staging]
 }
 
 resource "mongodbatlas_network_container" "network_container_production" {
   project_id       = mongodbatlas_project.project_production.id
-  atlas_cidr_block = "10.0.128.0/18"
+  atlas_cidr_block = "192.168.248.0/21"
 
   provider_name = "AWS"
-  region_name   = "US_EAST_1"
+  region_name   = "AP_SOUTH_1"
 
   depends_on = [mongodbatlas_project.project_production]
 }
 
-# Private Endpoints (no changes needed)
 resource "mongodbatlas_privatelink_endpoint" "privatelink_endpoint_development" {
   project_id    = mongodbatlas_project.project_development.id
   provider_name = local.provider_name

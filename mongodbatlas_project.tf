@@ -1,6 +1,6 @@
 resource "mongodbatlas_project" "project_development" {
   name   = lower(join("-", [local.org_short_name, "project", "development"]))
-  org_id = local.org_id
+  org_id = local.mongo_org_id
 
   with_default_alerts_settings                     = true
   is_collect_database_specifics_statistics_enabled = false
@@ -19,7 +19,7 @@ resource "mongodbatlas_project" "project_development" {
 
 resource "mongodbatlas_project" "project_staging" {
   name   = lower(join("-", [local.org_short_name, "project", "staging"]))
-  org_id = local.org_id
+  org_id = local.mongo_org_id
 
   with_default_alerts_settings                     = true
   is_collect_database_specifics_statistics_enabled = false
@@ -39,7 +39,7 @@ resource "mongodbatlas_project" "project_staging" {
 
 resource "mongodbatlas_project" "project_production" {
   name   = lower(join("-", [local.org_short_name, "project", "production"]))
-  org_id = local.org_id
+  org_id = local.mongo_org_id
 
   with_default_alerts_settings                     = true
   is_collect_database_specifics_statistics_enabled = true

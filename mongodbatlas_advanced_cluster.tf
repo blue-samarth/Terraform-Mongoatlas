@@ -1,6 +1,6 @@
 resource "mongodbatlas_advanced_cluster" "advanced_cluster_development" {
   project_id     = mongodbatlas_project.project_development.id
-  name           = lower(join("-", [local.org_short_name, "advanced", "cluster", "development"]))
+  name           = lower(join("-", [local.org_short_name, "cluster", "dev"]))
   cluster_type   = "REPLICASET"
   backup_enabled = false
 
@@ -61,7 +61,7 @@ resource "mongodbatlas_advanced_cluster" "advanced_cluster_development" {
 
 resource "mongodbatlas_advanced_cluster" "advanced_cluster_staging" {
   project_id     = mongodbatlas_project.project_staging.id
-  name           = lower(join("-", [local.org_short_name, "advanced", "cluster", "staging"]))
+  name           = lower(join("-", [local.org_short_name, "cluster", "stag"]))
   cluster_type   = "REPLICASET"
   backup_enabled = false
 
@@ -122,7 +122,7 @@ resource "mongodbatlas_advanced_cluster" "advanced_cluster_staging" {
 
 resource "mongodbatlas_advanced_cluster" "advanced_cluster_production" {
   project_id     = mongodbatlas_project.project_production.id
-  name           = lower(join("-", [local.org_short_name, "advanced", "cluster", "production"]))
+  name           = lower(join("-", [local.org_short_name, "cluster", "prod"]))
   cluster_type   = "REPLICASET"
   backup_enabled = true
 
@@ -133,12 +133,12 @@ resource "mongodbatlas_advanced_cluster" "advanced_cluster_production" {
   replication_specs = [{
     region_configs = [{
       analytics_specs = {
-        instance_size = "M20"
+        instance_size = "M10"
         node_count    = 0
       }
 
       electable_specs = {
-        instance_size = "M20"
+        instance_size = "M10"
         node_count    = 3
       }
 
@@ -151,6 +151,8 @@ resource "mongodbatlas_advanced_cluster" "advanced_cluster_production" {
         compute_enabled            = true
         disk_gb_enabled            = true
         compute_scale_down_enabled = true
+        compute_min_instance_size  = "M10"
+        compute_max_instance_size  = "M20"
       }
 
       analytics_auto_scaling = {

@@ -62,7 +62,7 @@ resource "mongodbatlas_cloud_user_team_assignment" "user_team_assignments" {
   for_each = local.user_assignments_individual
 
   org_id  = local.mongo_org_id
-  team_id = mongodbatlas_team.teams["${each.value.role}-${each.value.environment}"].id
+  team_id = mongodbatlas_team.teams["${each.value.role}-${each.value.environment}"].team_id
   user_id = mongodbatlas_cloud_user_project_assignment.user_project_assignments[each.key].user_id
 
   depends_on = [mongodbatlas_cloud_user_project_assignment.user_project_assignments]
