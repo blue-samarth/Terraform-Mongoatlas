@@ -8,7 +8,7 @@ locals {
   mongo_org_id   = "THE_MONGODB_ORG_ID"
 
   vpc_cidr              = "10.10.0.0/16"
-  secondary_cidr_blocks = ["10.10.10.0/18", "10.10.20.0/18"]
+  secondary_cidr_blocks = ["10.11.0.0/18", "10.12.0.0/18"]
   azs                   = slice(data.aws_availability_zones.available.names, 0, 3)
 
   endpoint_service_id_development = "your_endpoint_service_id_here"
